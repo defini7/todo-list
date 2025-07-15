@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="src/index.js"></script>
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/styles.css" rel="stylesheet">
+    <title>ToDo List</title>
+</head>
+<body>
+    <div class="container my-4" id="toDoContainer">
+        <form name="toDoForm">
+            <div class="row align-items-center my-3">
+                <div class="col-5">
+                    <input name="title" class="form-control" type="text" placeholder="Название задачи" required>
+                </div>
+
+                <div class="col-2">
+                    <select name="priority" class="form-select">
+                        <option value="high">Высокий</option>
+                        <option value="medium" selected>Средний</option>
+                        <option value="low">Низкий</option>
+                        <option value="none">Без приоритета</option>
+                    </select>
+                </div>
+
+                <div class="col-2">
+                    <input name="date" class="form-control" type="date">
+                </div>
+
+                <div class="col-3">
+                    <div class="d-flex justify-content-around align-items-center">
+                        <input name="color" type="color" class="form-control form-control-color" value="#563d7c">
+                        <label>Цвет</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center mt-2 mb-3">
+                <div class="col-10">
+                    <textarea name="description" class="form-control" placeholder="Описание задачи"></textarea>
+                </div>
+
+                <div class="col d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary" onclick="addToDo()">Добавить</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="controls-container d-flex justify-content-between">
+            <button id="deleteSelectedBtn" class="btn btn-danger">Удалить выбранные</button>
+            <div class="btn-group">
+                <button id="sortByDateBtn" class="btn btn-outline-secondary sort-btn active">По дате</button>
+                <button id="sortByCreationBtn" class="btn btn-outline-secondary sort-btn">По добавлению</button>
+            </div>
+        </div>
+
+        <div id="todosContainer">
+            <!-- Секции будут добавляться динамически -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('deleteSelectedBtn').addEventListener('click', deleteSelected);
+            document.getElementById('sortByDateBtn').addEventListener('click', function() {
+                renderTodos('date');
+                setActiveSortButton(this);
+            });
+            document.getElementById('sortByCreationBtn').addEventListener('click', function() {
+                renderTodos('creation');
+                setActiveSortButton(this);
+            });
+            
+            loadTodos();
+        });
+
+        function setActiveSortButton(activeButton) {
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            activeButton.classList.add('active');
+        }
+    </script>
+</body>
+</html>

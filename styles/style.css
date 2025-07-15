@@ -1,0 +1,56 @@
+body {
+    margin: 0 10%;
+}
+
+.priority-section {
+    margin-bottom: 30px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.priority-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid;
+}
+
+.high-priority {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.medium-priority {
+    border-color: #fd7e14;
+    color: #fd7e14;
+}
+
+.low-priority {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.no-priority {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.sort-btn.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.controls-container {
+    margin: 20px 0;
+}
+
+.task-card {
+    margin-bottom: 10px;
+}
+
+.priority-badge {
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
